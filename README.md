@@ -1,2 +1,2 @@
-# Android_Project
-Aplikacje mobilne na platformę Android
+# Pomysł:
+Aplikacja mobilna służąca do zapisywania treningów wspinaczkowych, śledzenia progresu itp.
