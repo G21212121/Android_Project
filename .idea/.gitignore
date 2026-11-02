@@ -1,0 +1,8 @@
+# Lokalne ustawienia IDE – NIE commituj
+/shelf/
+/workspace.xml
+/tasks.xml
+/usage.statistics.xml
+/dictionaries/
+/contentModel.xml
+/.idea/caches/

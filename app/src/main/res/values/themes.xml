@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Motyw bazowy dla aktywności – wymagany przez AndroidManifest.xml.
+        Jetpack Compose obsługuje własny system kolorów przez MaterialTheme,
+        więc ten motyw jest tylko punktem startowym (brak ActionBar).
+    -->
+    <style name="Theme.BoulderingApp" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>

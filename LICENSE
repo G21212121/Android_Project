@@ -1,21 +1,29 @@
-MIT License
+Copyright (c) 2026 Tomasz Gasiński, Vladyslav Nikonenko
+All Rights Reserved.
 
-Copyright (c) 2026 Tomasz Gasiński
+LICENSE – ALL RIGHTS RESERVED
+==============================
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This software, including its source code, documentation, and associated
+resources (hereinafter referred to as the "Software"), is the intellectual
+property of the authors listed above and is protected by copyright law.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+PERMITTED:
+  - Viewing the source code for educational and informational purposes only.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+PROHIBITED without prior written consent from the authors:
+  - Copying, reproducing, or duplicating the Software in whole or in part.
+  - Modifying, adapting, or creating derivative works.
+  - Distributing, sharing, or sublicensing the Software.
+  - Any commercial use in any form (sale, SaaS, integration into a
+    revenue-generating product, etc.).
+  - Using the authors' names, logos, or trademarks to promote products
+    derived from this Software.
+
+DISCLAIMER:
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+  OR IMPLIED. THE AUTHORS SHALL NOT BE LIABLE FOR ANY DAMAGES ARISING FROM
+  THE USE OF OR INABILITY TO USE THE SOFTWARE.
+
+All licensing inquiries should be directed to the authors via the GitHub
+repository.
