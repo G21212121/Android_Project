@@ -1,0 +1,92 @@
+uniform float2 iResolution;
+uniform float iTime;
+
+uniform half4 darkColor;
+uniform half4 medColor;
+uniform half4 lightColor;
+uniform half4 bgColor;
+
+uniform float waveScale;
+uniform float waviness;
+uniform float angle;
+uniform int direction;
+
+float hash2(vec2 p) {
+    vec3 p3 = fract(p.xyx * 0.1031);
+    p3 += dot(p3, p3.yzx + 33.33);
+    return fract((p3.x + p3.y) * p3.z);
+}
+
+float noise2d(vec2 p) {
+    vec2 i = floor(p);
+    vec2 f = fract(p);
+    vec2 u = f * f * (3.0 - 2.0 * f);
+    return mix(
+        mix(hash2(i + vec2(0.0, 0.0)), hash2(i + vec2(1.0, 0.0)), u.x),
+        mix(hash2(i + vec2(0.0, 1.0)), hash2(i + vec2(1.0, 1.0)), u.x),
+        u.y
+    );
+}
+
+float fbm(vec2 p) {
+    float val = 0.0;
+    float amp = 0.5;
+    vec2 pos = p;
+    for (int i = 0; i < 5; i++) {
+        val += amp * noise2d(pos);
+        pos = pos * 2.0 + vec2(1.7, 9.2);
+        amp *= 0.5;
+    }
+    return val;
+}
+
+half4 main(float2 fragCoord) {
+    vec2 dims = iResolution;
+    vec2 uv = fragCoord / dims;
+
+    float rad = angle * 3.14159265 / 180.0;
+    float ca = cos(rad);
+    float sa = sin(rad);
+
+    vec2 p = uv * dims;
+    vec2 center = dims * 0.5;
+    vec2 cp = p - center;
+    vec2 rotP = vec2(cp.x * ca + cp.y * sa, -cp.x * sa + cp.y * ca);
+
+    float minDim = min(dims.x, dims.y);
+    vec2 sc = rotP / (minDim * waveScale);
+
+    float time = iTime * 0.2;
+    float tOffX = 0.0;
+    float tOffY = 0.0;
+
+    if (direction == 0) {
+        tOffY = -time;
+    } else if (direction == 1) {
+        tOffY = time;
+    } else {
+        tOffX = time;
+    }
+
+    float numBands = 10.0;
+    float bandY = (sc.y + tOffY) * numBands;
+    float disp = fbm(vec2(sc.x * 3.0 + tOffX, sc.y * 2.0 + tOffY)) * waviness * 2.0
+               + fbm(vec2(sc.x * 1.5 + 5.0 + tOffX, sc.y * 1.0 + 3.0 + tOffY)) * waviness * 1.5;
+    float displaced = bandY + disp * numBands * 0.3;
+
+    int bandIdx = int(floor(displaced));
+    if (bandIdx < 0) {
+        bandIdx += 4;
+    }
+
+    half4 col = bgColor;
+    if (bandIdx == 0) {
+        col = darkColor;
+    } else if (bandIdx == 1) {
+        col = medColor;
+    } else if (bandIdx == 2) {
+        col = lightColor;
+    }
+
+    return col;
+}
