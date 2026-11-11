@@ -26,10 +26,12 @@ import com.boulderingapp.ui.components.AppBackground
 import com.boulderingapp.ui.components.CustomButton
 import com.boulderingapp.ui.components.HeaderLogo
 
+//Ekran sprawdzeniu maila do resetu halsa:
 @Composable
 fun ForgotPasswordScreen(
     onNavigateBack: () -> Unit = {},
     onSendCodeClick: (String) -> Unit = {},
+    onNavigateToResetPassword: () -> Unit = {},
     onResetPasswordClick: (String, String) -> Unit = { _, _ -> }
 ) {
     var email by remember { mutableStateOf("") }
@@ -107,7 +109,7 @@ fun ForgotPasswordScreen(
 
             CustomButton(
                 text = "Create new password",
-                onClick = { onResetPasswordClick(email, code) }
+                onClick = onNavigateToResetPassword
             )
 
             Spacer(modifier = Modifier.height(16.dp))
