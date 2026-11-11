@@ -14,7 +14,8 @@ import androidx.compose.ui.unit.sp
 // Ekran rejestracji:
 @Composable
 fun RegisterScreen(
-    onNavigateBack: () -> Unit = {},
+    onNavigateToStart: () -> Unit = {},
+    onNavigateToLogin: () -> Unit = {},
     onRegisterSuccess: () -> Unit = {}
 ) {
     var email by remember { mutableStateOf("") }
@@ -30,7 +31,9 @@ fun RegisterScreen(
         ) {
             Spacer(modifier = Modifier.height(40.dp))
 
-            HeaderLogo()
+            Box(modifier = Modifier.clickable { onNavigateToStart() }) {
+                HeaderLogo()
+            }
 
             Spacer(modifier = Modifier.height(30.dp))
 
@@ -73,13 +76,13 @@ fun RegisterScreen(
                 onClick = onRegisterSuccess
             )
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
             Text(
-                text = "Back to start",
+                text = "Already have an account",
                 color = PrimaryPurple,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.clickable { onNavigateBack() }
+                modifier = Modifier.clickable { onNavigateToLogin() }
             )
         }
     }

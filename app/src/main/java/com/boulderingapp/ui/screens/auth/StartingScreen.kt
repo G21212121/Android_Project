@@ -26,6 +26,9 @@ fun StartingScreen(
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+
+            Spacer(modifier = Modifier.height(40.dp))
+
             HeaderLogo()
 
             Spacer(modifier = Modifier.height(30.dp))
@@ -34,7 +37,7 @@ fun StartingScreen(
                 text = "Bouldering\nTraining App",
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.White,
+                color = PrimaryPurple,
                 lineHeight = 36.sp,
                 modifier = Modifier.padding(bottom = 60.dp)
             )

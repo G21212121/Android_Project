@@ -14,8 +14,10 @@ import androidx.compose.ui.unit.sp
 // Ekran logowania:
 @Composable
 fun LoginScreen(
-    onNavigateBack: () -> Unit = {},
-    onLoginSuccess: () -> Unit = {}
+    onNavigateToStart: () -> Unit = {},
+    onLoginSuccess: () -> Unit = {},
+    onNavigateToRegister: () -> Unit = {},
+    onNavigateToForgotPassword: () -> Unit = {}
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -29,7 +31,9 @@ fun LoginScreen(
         ) {
             Spacer(modifier = Modifier.height(40.dp))
 
-            HeaderLogo()
+            Box(modifier = Modifier.clickable { onNavigateToStart() }) {
+                HeaderLogo()
+            }
 
             Spacer(modifier = Modifier.height(30.dp))
 
@@ -56,20 +60,29 @@ fun LoginScreen(
                 isPassword = true
             )
 
-            Spacer(modifier = Modifier.height(40.dp))
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Text(
+                text = "Forgot the password",
+                color = PrimaryPurple,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.clickable { onNavigateToForgotPassword() }
+            )
+
+            Spacer(modifier = Modifier.height(20.dp))
 
             CustomButton(
                 text = "Sign In",
                 onClick = onLoginSuccess
             )
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
             Text(
-                text = "Back to start",
+                text = "Don't have an account",
                 color = PrimaryPurple,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.clickable { onNavigateBack() }
+                modifier = Modifier.clickable { onNavigateToRegister() }
             )
         }
     }
