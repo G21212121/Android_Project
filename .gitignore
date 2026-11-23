@@ -23,6 +23,8 @@
 .idea/dictionaries/
 .idea/contentModel.xml
 .idea/usage.statistics.xml
+.idea/gradle.xml
+.idea/misc.xml
 
 # ===========================
 # Moduł app
