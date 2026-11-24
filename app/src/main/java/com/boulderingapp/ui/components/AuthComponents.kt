@@ -30,7 +30,13 @@ val InputFieldBg = Color(0xFFF7F7F7)
 val WaveBackground = Color(0xFFEAF2FB) // Kolor tła z Twoich suwaków z Figmy
 
 @Composable
-fun AppBackground(content: @Composable BoxScope.() -> Unit) {
+fun AppBackground(
+    darkColor: Color = Color(0xFF1B4B7A),
+    medColor: Color = Color(0xFF5B9BD5),
+    lightColor: Color = Color(0xFFA8D0F0),
+    bgColor: Color = WaveBackground,
+    content: @Composable BoxScope.() -> Unit
+) {
     Box(modifier = Modifier.fillMaxSize()) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             val context = LocalContext.current
@@ -58,10 +64,10 @@ fun AppBackground(content: @Composable BoxScope.() -> Unit) {
                 Canvas(modifier = Modifier.fillMaxSize()) {
                     shader.setFloatUniform("iResolution", size.width, size.height)
                     shader.setFloatUniform("iTime", time)
-                    shader.setFloatUniform("darkColor", 0.106f, 0.294f, 0.478f, 1.0f)
-                    shader.setFloatUniform("medColor", 0.357f, 0.608f, 0.835f, 1.0f)
-                    shader.setFloatUniform("lightColor", 0.659f, 0.816f, 0.941f, 1.0f)
-                    shader.setFloatUniform("bgColor", 0.918f, 0.949f, 0.984f, 1.0f)
+                    shader.setFloatUniform("darkColor", darkColor.red, darkColor.green, darkColor.blue, darkColor.alpha)
+                    shader.setFloatUniform("medColor", medColor.red, medColor.green, medColor.blue, medColor.alpha)
+                    shader.setFloatUniform("lightColor", lightColor.red, lightColor.green, lightColor.blue, lightColor.alpha)
+                    shader.setFloatUniform("bgColor", bgColor.red, bgColor.green, bgColor.blue, bgColor.alpha)
                     shader.setFloatUniform("waveScale", 1.5f)
                     shader.setFloatUniform("waviness", 1.0f)
                     shader.setFloatUniform("angle", 180.0f)
@@ -70,12 +76,10 @@ fun AppBackground(content: @Composable BoxScope.() -> Unit) {
                     drawRect(brush = ShaderBrush(shader))
                 }
             } else {
-                // Tło jednolite w razie błędu shadera
-                Box(modifier = Modifier.fillMaxSize().background(WaveBackground))
+                Box(modifier = Modifier.fillMaxSize().background(bgColor))
             }
         } else {
-            // Tło jednolite dla urządzeń ze starszym Androidem
-            Box(modifier = Modifier.fillMaxSize().background(WaveBackground))
+            Box(modifier = Modifier.fillMaxSize().background(bgColor))
         }
 
         content()
