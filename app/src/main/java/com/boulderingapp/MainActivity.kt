@@ -11,7 +11,9 @@ import com.boulderingapp.ui.screens.auth.LoginScreen
 import com.boulderingapp.ui.screens.auth.RegisterScreen
 import com.boulderingapp.ui.screens.auth.ResetPasswordScreen
 import com.boulderingapp.ui.screens.auth.StartingScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
